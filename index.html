@@ -1,539 +1,603 @@
 <!DOCTYPE html>
 <html lang="vi">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Nhà Khoa Học Khí Hậu | Trang Cá Nhân</title>
-    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Source+Sans+3:wght@300;400;500;600&display=swap" rel="stylesheet">
-    <style>
-        :root {
-            --primary-green: #2D5A27;
-            --light-green: #4A7C43;
-            --pale-green: #E8F5E9;
-            --accent-green: #81C784;
-            --dark-text: #1B3A1A;
-            --soft-white: #FAFFFE;
-        }
-        
-        body {
-            font-family: 'Source Sans 3', sans-serif;
-            background: linear-gradient(135deg, var(--soft-white) 0%, var(--pale-green) 100%);
-            min-height: 100vh;
-        }
-        
-        .font-serif-display {
-            font-family: 'Playfair Display', serif;
-        }
-        
-        .bg-pattern {
-            background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%234A7C43' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
-        }
-        
-        .leaf-decoration::before {
-            content: '🌿';
-            position: absolute;
-            font-size: 1.5rem;
-            opacity: 0.6;
-        }
-        
-        .card-hover {
-            transition: all 0.3s ease;
-        }
-        
-        .card-hover:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 12px 40px rgba(45, 90, 39, 0.15);
-        }
-        
-        .timeline-line {
-            background: linear-gradient(180deg, var(--accent-green), var(--primary-green));
-        }
-        
-        .avatar-ring {
-            background: linear-gradient(135deg, var(--primary-green), var(--accent-green));
-            padding: 4px;
-        }
-        
-        .section-divider {
-            height: 2px;
-            background: linear-gradient(90deg, transparent, var(--accent-green), transparent);
-        }
-    </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Website cá nhân của nhà khoa học về biến đổi khí hậu: hồ sơ, quá trình làm việc, kỹ năng và hướng nghiên cứu." />
+  <meta name="theme-color" content="#0f766e" />
+
+  <title>Hồ sơ khoa học | Climate Scientist</title>
+
+  <!-- Tailwind CSS CDN (required) -->
+  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+
+  <!-- Fonts: modern + traditional -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Merriweather:wght@300;700&display=swap" rel="stylesheet" />
+
+  <style>
+    :root{
+      --ink: #0b1b13;
+      --forest: #0f766e;
+      --leaf: #16a34a;
+      --sage: #e7f3ec;
+      --paper: #ffffff;
+      --sand: #f6f5ef;
+      --line: rgba(15, 118, 110, .18);
+    }
+
+    html, body { height: 100%; }
+    body {
+      font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif;
+      color: var(--ink);
+      background:
+        radial-gradient(1200px 600px at 20% 10%, rgba(22,163,74,.12), transparent 60%),
+        radial-gradient(900px 500px at 80% 20%, rgba(15,118,110,.10), transparent 55%),
+        radial-gradient(700px 450px at 30% 95%, rgba(22,163,74,.08), transparent 60%),
+        linear-gradient(180deg, #ffffff 0%, #fbfffd 60%, #f6fbf8 100%);
+    }
+
+    .serif { font-family: Merriweather, ui-serif, Georgia, Cambria, "Times New Roman", Times, serif; }
+
+    .glass {
+      background: rgba(255,255,255,.72);
+      border: 1px solid rgba(15,118,110,.16);
+      box-shadow: 0 10px 30px rgba(2, 44, 34, .08);
+      backdrop-filter: blur(10px);
+    }
+
+    .hairline { border-color: var(--line); }
+
+    .kbd {
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+      font-size: .85em;
+      border: 1px solid rgba(0,0,0,.15);
+      border-bottom-width: 2px;
+      padding: .1rem .35rem;
+      border-radius: .4rem;
+      background: rgba(255,255,255,.65);
+    }
+
+    /* Print friendly */
+    @media print {
+      .no-print { display: none !important; }
+      body { background: #fff !important; }
+      .glass { box-shadow: none !important; background: #fff !important; }
+    }
+
+    /* Subtle focus ring */
+    :focus-visible {
+      outline: 3px solid rgba(22,163,74,.35);
+      outline-offset: 2px;
+    }
+  </style>
 </head>
-<body class="bg-pattern">
-    <!-- ===== NAVIGATION ===== -->
-    <nav class="fixed top-0 left-0 right-0 bg-white/90 backdrop-blur-md shadow-sm z-50">
-        <div class="max-w-6xl mx-auto px-4 py-3">
-            <div class="flex items-center justify-between">
-                <div class="flex items-center gap-2">
-                    <span class="text-2xl">🌍</span>
-                    <span class="font-serif-display text-lg font-semibold text-[#2D5A27]">Climate Scientist</span>
-                </div>
-                <div class="hidden md:flex items-center gap-6">
-                    <a href="#about" class="text-[#1B3A1A] hover:text-[#4A7C43] transition-colors font-medium">Giới thiệu</a>
-                    <a href="#experience" class="text-[#1B3A1A] hover:text-[#4A7C43] transition-colors font-medium">Kinh nghiệm</a>
-                    <a href="#skills" class="text-[#1B3A1A] hover:text-[#4A7C43] transition-colors font-medium">Kỹ năng</a>
-                    <a href="#research" class="text-[#1B3A1A] hover:text-[#4A7C43] transition-colors font-medium">Nghiên cứu</a>
-                    <a href="#contact" class="bg-[#2D5A27] text-white px-4 py-2 rounded-full hover:bg-[#4A7C43] transition-colors font-medium">Liên hệ</a>
-                </div>
-                <!-- Mobile menu button -->
-                <button id="mobileMenuBtn" class="md:hidden text-[#2D5A27] p-2">
-                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
-                    </svg>
-                </button>
+
+<body>
+  <a href="#main" class="sr-only focus:not-sr-only focus:fixed focus:top-3 focus:left-3 focus:z-50 focus:bg-white focus:px-4 focus:py-2 focus:rounded-lg focus:shadow">
+    Đi tới nội dung chính
+  </a>
+
+  <header class="max-w-6xl mx-auto px-4 pt-10 pb-6">
+    <div class="glass rounded-3xl p-6 md:p-8">
+      <div class="flex flex-col md:flex-row md:items-center gap-6">
+        <div class="flex items-center gap-5">
+          <div class="relative">
+            <img id="avatarImg" alt="Ảnh đại diện" class="h-24 w-24 md:h-28 md:w-28 rounded-2xl object-cover border border-emerald-900/10 shadow-sm" />
+            <div class="absolute -bottom-2 -right-2 rounded-xl px-2.5 py-1 text-xs font-semibold text-emerald-900 bg-emerald-50 border border-emerald-900/10">
+              Climate
             </div>
-            <!-- Mobile menu -->
-            <div id="mobileMenu" class="hidden md:hidden mt-4 pb-4 border-t border-[#E8F5E9]">
-                <div class="flex flex-col gap-3 pt-4">
-                    <a href="#about" class="text-[#1B3A1A] hover:text-[#4A7C43] font-medium">Giới thiệu</a>
-                    <a href="#experience" class="text-[#1B3A1A] hover:text-[#4A7C43] font-medium">Kinh nghiệm</a>
-                    <a href="#skills" class="text-[#1B3A1A] hover:text-[#4A7C43] font-medium">Kỹ năng</a>
-                    <a href="#research" class="text-[#1B3A1A] hover:text-[#4A7C43] font-medium">Nghiên cứu</a>
-                    <a href="#contact" class="text-[#1B3A1A] hover:text-[#4A7C43] font-medium">Liên hệ</a>
-                </div>
-            </div>
+          </div>
+          <div>
+            <h1 id="fullName" class="serif text-2xl md:text-3xl font-bold tracking-tight text-emerald-950"></h1>
+            <p id="headline" class="mt-1 text-emerald-900/80"></p>
+            <div class="mt-3 flex flex-wrap gap-2 no-print" id="quickLinks"></div>
+          </div>
         </div>
-    </nav>
 
-    <!-- ===== HERO SECTION WITH PERSONAL INFO ===== -->
-    <section id="about" class="pt-24 pb-16">
-        <div class="max-w-6xl mx-auto px-4">
-            <div class="bg-white rounded-3xl shadow-xl overflow-hidden">
-                <!-- Banner decorative -->
-                <div class="h-32 bg-gradient-to-r from-[#2D5A27] via-[#4A7C43] to-[#81C784] relative">
-                    <div class="absolute inset-0 opacity-20">
-                        <svg class="w-full h-full" viewBox="0 0 100 100" preserveAspectRatio="none">
-                            <path d="M0,50 Q25,30 50,50 T100,50 V100 H0 Z" fill="white"/>
-                        </svg>
-                    </div>
-                        <!-- Personal Information -->
-                        <div class="flex-grow pt-4 md:pt-8">
-                            <!-- ========================================
-                                 THÔNG TIN CÁ NHÂN - CHỈNH SỬA TẠI ĐÂY
-                            ======================================== -->
-                            <h1 class="font-serif-display text-3xl md:text-4xl font-bold text-[#2D5A27] text-center md:text-left">
-                                Nguyễn Minh Ngọc
-                            </h1>
-                            <p class="text-[#4A7C43] text-lg font-medium mt-1 text-center md:text-left">
-                                Kỹ sư Quản lý tài nguyên và môi trường
-                            </p>
-                            
-                            <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-6">
-                                <div class="flex items-center gap-3 text-[#1B3A1A]">
-                                    <span class="w-10 h-10 bg-[#E8F5E9] rounded-full flex items-center justify-center">
-                                        <svg class="w-5 h-5 text-[#2D5A27]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/>
-                                        </svg>
-                                    </span>
-                                    <div>
-                                        <p class="text-sm text-gray-500">Ngày tháng năm sinh</p>
-                                        <p class="font-medium">13/04/2003</p>
-                                    </div>
-                                </div>
-                                
-                                <div class="flex items-center gap-3 text-[#1B3A1A]">
-                                    <span class="w-10 h-10 bg-[#E8F5E9] rounded-full flex items-center justify-center">
-                                        <svg class="w-5 h-5 text-[#2D5A27]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/>
-                                        </svg>
-                                    </span>
-                                    <div>
-                                        <p class="text-sm text-gray-500">Điện thoại</p>
-                                        <p class="font-medium">+84 774 017 979</p>
-                                    </div>
-                                </div>
-                                
-                                <div class="flex items-center gap-3 text-[#1B3A1A]">
-                                    <span class="w-10 h-10 bg-[#E8F5E9] rounded-full flex items-center justify-center">
-                                        <svg class="w-5 h-5 text-[#2D5A27]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
-                                        </svg>
-                                    </span>
-                                    <div>
-                                        <p class="text-sm text-gray-500">Email</p>
-                                        <p class="font-medium">ngocm2925018@gstudent.ctu.edu.vn</p>
-                                    </div>
-                                </div>
-                                
-                                <div class="flex items-center gap-3 text-[#1B3A1A]">
-                                    <span class="w-10 h-10 bg-[#E8F5E9] rounded-full flex items-center justify-center">
-                                        <svg class="w-5 h-5 text-[#2D5A27]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z"/>
-                                        </svg>
-                                    </span>
-                                    <div>
-                                        <p class="text-sm text-gray-500">Chuyên ngành</p>
-                                        <p class="font-medium">Quản lý tài nguyên và môi trường</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- ===== WORK EXPERIENCE ===== -->
-    <section id="experience" class="py-16">
-        <div class="max-w-6xl mx-auto px-4">
-            <div class="text-center mb-12">
-                <span class="inline-block px-4 py-1 bg-[#E8F5E9] text-[#2D5A27] rounded-full text-sm font-medium mb-3">
-                    🏛️ Sự nghiệp
-                </span>
-                <h2 class="font-serif-display text-3xl md:text-4xl font-bold text-[#2D5A27]">
-                    Quá Trình Làm Việc
-                </h2>
-            </div>
-            
-            <!-- ========================================
-                 QUÁ TRÌNH LÀM VIỆC - CHỈNH SỬA TẠI ĐÂY
-                 Sao chép một khối <div class="relative pl-8 pb-10">...</div>
-                 để thêm công việc mới
-            ======================================== -->
-            <div class="relative">
-                <!-- Timeline line -->
-                <div class="absolute left-[11px] top-2 bottom-10 w-0.5 timeline-line rounded-full hidden md:block"></div>
-                
-                <!-- Experience Item 1 -->
-                <div class="relative pl-8 pb-10">
-                    <div class="absolute left-0 top-2 w-6 h-6 bg-[#2D5A27] rounded-full border-4 border-white shadow-md hidden md:block"></div>
-                    <div class="bg-white rounded-2xl p-6 shadow-lg card-hover ml-0 md:ml-4">
-                        <div class="flex flex-wrap items-center gap-3 mb-3">
-                            <span class="px-3 py-1 bg-[#2D5A27] text-white text-sm font-medium rounded-full">
-                                Hiện tại
-                            </span>
-                            <span class="text-[#4A7C43] font-medium">Kỹ sư</span>
-                        </div>
-                        <h3 class="font-serif-display text-xl font-semibold text-[#1B3A1A] mb-2">
-                            Sở Nông nghiệp và Môi trường
-                        </h3>
-                        <p class="text-gray-600 leading-relaxed">
-                            Nghiên cứu về tác động của biến đổi khí hậu đến vùng đồng bằng sông Cửu Long. 
-                            Phát triển các mô hình dự báo và đề xuất giải pháp thích ứng cho cộng đồng địa phương. 
-                        </p>
-                    </div>
-                </div>
-                
-                <!-- Experience Item 2 -->
-                <div class="relative pl-8 pb-10">
-                    <div class="absolute left-0 top-2 w-6 h-6 bg-[#4A7C43] rounded-full border-4 border-white shadow-md hidden md:block"></div>
-                    <div class="bg-white rounded-2xl p-6 shadow-lg card-hover ml-0 md:ml-4">
-                        <div class="flex flex-wrap items-center gap-3 mb-3">
-                            <span class="px-3 py-1 bg-[#4A7C43] text-white text-sm font-medium rounded-full">
-                                2021 - 2025
-                            </span>
-                            <span class="text-[#4A7C43] font-medium">Sinh viên</span>
-                        </div>
-                        <h3 class="font-serif-display text-xl font-semibold text-[#1B3A1A] mb-2">
-                            Đại học Cần Thơ
-                        </h3>
-                        <p class="text-gray-600 leading-relaxed">
-                            Thực hiện đề tài "Khảo sát rủi ro thiên tai tác động đến sinh kế và giải pháp thích ứng tại huyện Trà Ôn, tỉnh Vĩnh Long". 
-                            Tham gia học hỏi các buổi toạ đàm về Biến đổi khí hậu khu vực ĐBSCL.
-                        </p>
-                    </div>
-                </div>
-                
-                <!-- Experience Item 3 -->
-                <div class="relative pl-8 pb-10">
-                    <div class="absolute left-0 top-2 w-6 h-6 bg-[#81C784] rounded-full border-4 border-white shadow-md hidden md:block"></div>
-                    <div class="bg-white rounded-2xl p-6 shadow-lg card-hover ml-0 md:ml-4">
-                        <div class="flex flex-wrap items-center gap-3 mb-3">
-                            <span class="px-3 py-1 bg-[#81C784] text-white text-sm font-medium rounded-full">
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- ===== SKILLS ===== -->
-    <section id="skills" class="py-16 bg-white/50">
-        <div class="max-w-6xl mx-auto px-4">
-            <div class="text-center mb-12">
-                <span class="inline-block px-4 py-1 bg-[#E8F5E9] text-[#2D5A27] rounded-full text-sm font-medium mb-3">
-                    💡 Năng lực
-                </span>
-                <h2 class="font-serif-display text-3xl md:text-4xl font-bold text-[#2D5A27]">
-                    Kỹ Năng Chuyên Môn
-                </h2>
-            </div>
-            
-            <!-- ========================================
-                 KỸ NĂNG - CHỈNH SỬA TẠI ĐÂY
-                 Sao chép một khối <div class="bg-white rounded-2xl...">...</div>
-                 để thêm kỹ năng mới
-            ======================================== -->
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                <!-- Skill 1 -->
-                <div class="bg-white rounded-2xl p-6 shadow-lg card-hover border-l-4 border-[#2D5A27]">
-                    <div class="w-12 h-12 bg-[#E8F5E9] rounded-xl flex items-center justify-center mb-4">
-                        <span class="text-2xl">🌡️</span>
-                    </div>
-                    <h3 class="font-serif-display text-lg font-semibold text-[#1B3A1A] mb-2">
-                        Mô hình hóa khí hậu
-                    </h3>
-                    <p class="text-gray-600 text-sm leading-relaxed">
-                        Sử dụng thành thạo các mô hình khí hậu toàn cầu (GCM) và khu vực (RCM). 
-                        Có kinh nghiệm với CMIP6, WRF, và các công cụ downscaling thống kê.
-                    </p>
-                </div>
-                
-                <!-- Skill 2 -->
-                <div class="bg-white rounded-2xl p-6 shadow-lg card-hover border-l-4 border-[#4A7C43]">
-                    <div class="w-12 h-12 bg-[#E8F5E9] rounded-xl flex items-center justify-center mb-4">
-                        <span class="text-2xl">📊</span>
-                    </div>
-                    <h3 class="font-serif-display text-lg font-semibold text-[#1B3A1A] mb-2">
-                        Phân tích dữ liệu khí hậu
-                    </h3>
-                    <p class="text-gray-600 text-sm leading-relaxed">
-                        Xử lý và phân tích dữ liệu khí hậu quy mô lớn bằng Python, R, và MATLAB. 
-                        Ứng dụng machine learning trong dự báo khí hậu và phát hiện xu hướng.
-                    </p>
-                </div>
-                
-                <!-- Skill 3 -->
-                <div class="bg-white rounded-2xl p-6 shadow-lg card-hover border-l-4 border-[#81C784]">
-                    <div class="w-12 h-12 bg-[#E8F5E9] rounded-xl flex items-center justify-center mb-4">
-                        <span class="text-2xl">🗺️</span>
-                    </div>
-                    <h3 class="font-serif-display text-lg font-semibold text-[#1B3A1A] mb-2">
-                        GIS & Viễn thám
-                    </h3>
-                    <p class="text-gray-600 text-sm leading-relaxed">
-                        Phân tích không gian và xử lý ảnh vệ tinh. Thành thạo ArcGIS, QGIS, Google Earth Engine 
-                        trong đánh giá tác động môi trường và biến đổi sử dụng đất.
-                    </p>
-                </div>
-                
-                <!-- Skill 4 -->
-                <div class="bg-white rounded-2xl p-6 shadow-lg card-hover border-l-4 border-[#2D5A27]">
-                    <div class="w-12 h-12 bg-[#E8F5E9] rounded-xl flex items-center justify-center mb-4">
-                        <span class="text-2xl">📝</span>
-                    </div>
-                    </p>
-                
-                <!-- Skill 5 -->
-                <div class="bg-white rounded-2xl p-6 shadow-lg card-hover border-l-4 border-[#4A7C43]">
-                    <div class="w-12 h-12 bg-[#E8F5E9] rounded-xl flex items-center justify-center mb-4">
-                        <span class="text-2xl">🎤</span>
-                    </div>
-                
-                <!-- Skill 6 -->
-                <div class="bg-white rounded-2xl p-6 shadow-lg card-hover border-l-4 border-[#81C784]">
-                    <div class="w-12 h-12 bg-[#E8F5E9] rounded-xl flex items-center justify-center mb-4">
-                        <span class="text-2xl">🌏</span>
-                    </div>
-                    <h3 class="font-serif-display text-lg font-semibold text-[#1B3A1A] mb-2">
-                        Ngoại ngữ
-                    </h3>
-                    <p class="text-gray-600 text-sm leading-relaxed">
-                        Có chứng chỉ B1 anh văn
-                        Có kinh nghiệm làm việc trong môi trường đa văn hóa và hợp tác quốc tế.
-                    </p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- ===== RESEARCH INTERESTS ===== -->
-    <section id="research" class="py-16">
-        <div class="max-w-6xl mx-auto px-4">
-            <div class="text-center mb-12">
-                <span class="inline-block px-4 py-1 bg-[#E8F5E9] text-[#2D5A27] rounded-full text-sm font-medium mb-3">
-                    🔬 Khoa học
-                </span>
-                <h2 class="font-serif-display text-3xl md:text-4xl font-bold text-[#2D5A27]">
-                    Hướng Nghiên Cứu Chính
-                </h2>
-            </div>
-            
-            <!-- ========================================
-                 HƯỚNG NGHIÊN CỨU - CHỈNH SỬA TẠI ĐÂY
-            ======================================== -->
-            <div class="bg-white rounded-3xl shadow-xl overflow-hidden">
-                <div class="grid md:grid-cols-2">
-                    <!-- Image/Visual Side -->
-                    <div class="bg-gradient-to-br from-[#2D5A27] to-[#4A7C43] p-8 md:p-12 flex items-center justify-center">
-                        <div class="text-center text-white">
-                            <div class="text-6xl mb-6">🌏🔬</div>
-                            <h3 class="font-serif-display text-2xl font-bold mb-3">
-                                Nghiên cứu vì một<br>tương lai bền vững
-                            </h3>
-                            <p class="text-white/80 text-sm">
-                                "Khoa học là cầu nối giữa hiểu biết và hành động"
-                            </p>
-                        </div>
-                    </div>
-                    
-                    <!-- Content Side -->
-                    <div class="p-8 md:p-12">
-                        <div class="space-y-6">
-                            <div>
-                                <h4 class="font-serif-display text-xl font-semibold text-[#2D5A27] mb-3 flex items-center gap-2">
-                                    <span class="w-8 h-8 bg-[#E8F5E9] rounded-lg flex items-center justify-center text-sm">1</span>
-                                    Tác động của BĐKH đến Đồng bằng sông Cửu Long
-                                </h4>
-                                <p class="text-gray-600 leading-relaxed pl-10">
-                                    Nghiên cứu các kịch bản nước biển dâng, xâm nhập mặn và ảnh hưởng đến sản xuất nông nghiệp, 
-                                    sinh kế cộng đồng. Phát triển giải pháp thích ứng dựa vào hệ sinh thái.
-                                </p>
-                            </div>
-                            
-                            <div class="section-divider"></div>
-                            
-                            <div>
-                                <h4 class="font-serif-display text-xl font-semibold text-[#2D5A27] mb-3 flex items-center gap-2">
-                                    <span class="w-8 h-8 bg-[#E8F5E9] rounded-lg flex items-center justify-center text-sm">2</span>
-                                    Carbon xanh và hệ sinh thái ven biển
-                                </h4>
-                                <p class="text-gray-600 leading-relaxed pl-10">
-                                    Đánh giá tiềm năng lưu trữ carbon của rừng ngập mặn, thảm cỏ biển và đầm lầy ven biển. 
-                                    Phát triển phương pháp MRV (Đo lường - Báo cáo - Xác minh) cho thị trường carbon.
-                                </p>
-                            </div>
-                            
-                            <div class="section-divider"></div>
-                            
-                            <div>
-                                <h4 class="font-serif-display text-xl font-semibold text-[#2D5A27] mb-3 flex items-center gap-2">
-                                    <span class="w-8 h-8 bg-[#E8F5E9] rounded-lg flex items-center justify-center text-sm">3</span>
-                                    Chính sách khí hậu và Net Zero
-                                </h4>
-                                <p class="text-gray-600 leading-relaxed pl-10">
-                                    Hỗ trợ xây dựng lộ trình trung hòa carbon cho Việt Nam. Nghiên cứu cơ chế tài chính khí hậu, 
-                                    chuyển dịch năng lượng công bằng và các giải pháp giảm phát thải trong nông nghiệp.
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- ===== CONTACT SECTION ===== -->
-    <section id="contact" class="py-16 bg-white/50">
-        <div class="max-w-4xl mx-auto px-4">
-            <div class="text-center mb-12">
-                <span class="inline-block px-4 py-1 bg-[#E8F5E9] text-[#2D5A27] rounded-full text-sm font-medium mb-3">
-                    📬 Kết nối
-                </span>
-                <h2 class="font-serif-display text-3xl md:text-4xl font-bold text-[#2D5A27]">
-                    Liên Hệ & Hợp Tác
-                </h2>
-                <p class="text-gray-600 mt-4 max-w-2xl mx-auto">
-                    Rất vui lòng được trao đổi về các cơ hội hợp tác nghiên cứu, tư vấn chính sách, 
-                    hoặc các hoạt động đào tạo về biến đổi khí hậu.
-                </p>
-            </div>
-            
-            <!-- ========================================
-                 THÔNG TIN LIÊN HỆ - CHỈNH SỬA TẠI ĐÂY
-            ======================================== -->
-            <div class="grid md:grid-cols-3 gap-6">
-                <a href="mailto:ngocm2925018@gstudent.ctu.edu.vn" class="bg-white rounded-2xl p-6 shadow-lg card-hover text-center group">
-                    <div class="w-16 h-16 bg-[#E8F5E9] rounded-full flex items-center justify-center mx-auto mb-4 group-hover:bg-[#2D5A27] transition-colors">
-                        <svg class="w-7 h-7 text-[#2D5A27] group-hover:text-white transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
-                        </svg>
-                    </div>
-                    <h3 class="font-semibold text-[#1B3A1A] mb-1">Email</h3>
-                    <p class="text-[#4A7C43] text-sm">ngocm2925018@gstudent.ctu.edu.vn</p>
-                </a>
-                
-                <a href="tel:+84774017979" class="bg-white rounded-2xl p-6 shadow-lg card-hover text-center group">
-                    <div class="w-16 h-16 bg-[#E8F5E9] rounded-full flex items-center justify-center mx-auto mb-4 group-hover:bg-[#2D5A27] transition-colors">
-                        <svg class="w-7 h-7 text-[#2D5A27] group-hover:text-white transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/>
-                        </svg>
-                    </div>
-                    <h3 class="font-semibold text-[#1B3A1A] mb-1">Điện thoại</h3>
-                    <p class="text-[#4A7C43] text-sm">+84 774 017 979</p>
-                </a>
-                
-                <a href="https://scholar.google.com" target="_blank" class="bg-white rounded-2xl p-6 shadow-lg card-hover text-center group">
-                    <div class="w-16 h-16 bg-[#E8F5E9] rounded-full flex items-center justify-center mx-auto mb-4 group-hover:bg-[#2D5A27] transition-colors">
-                        <svg class="w-7 h-7 text-[#2D5A27] group-hover:text-white transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/>
-                        </svg>
-                    </div>
-    </section>
-
-    <!-- ===== FOOTER ===== -->
-    <footer class="bg-[#2D5A27] text-white py-8">
-        <div class="max-w-6xl mx-auto px-4 text-center">
-            <div class="flex items-center justify-center gap-2 mb-4">
-                <span class="text-2xl">🌍</span>
-                <span class="font-serif-display text-lg font-semibold">Climate Scientist</span>
-            </div>
-            <p class="text-white/70 text-sm mb-4">
-                "Khoa học ngày hôm nay là công nghệ của ngày mai" - Edward Teller
+        <div class="md:ml-auto w-full md:w-auto">
+          <div class="rounded-2xl bg-white/70 border hairline p-4">
+            <p class="text-sm text-emerald-950/80">
+              <span class="font-semibold">Gợi ý cập nhật (chỉ chủ sở hữu):</span>
+              Nhấn <span class="kbd">Ctrl</span> + <span class="kbd">Shift</span> + <span class="kbd">E</span> để mở <span class="font-semibold">Owner Tools</span> (đòi hỏi PIN). Người truy cập bình thường chỉ xem.
             </p>
-            <div class="section-divider mb-4 opacity-30"></div>
-            <p class="text-white/50 text-xs">
-                © 2024 - Thiết kế với 💚 cho Trái đất xanh
-            </p>
+          </div>
         </div>
+      </div>
+
+      <div class="mt-6 grid grid-cols-1 md:grid-cols-3 gap-4">
+        <div class="rounded-2xl bg-white/70 border hairline p-4">
+          <div class="text-xs font-semibold text-emerald-800 uppercase tracking-wider">Hướng nghiên cứu chính</div>
+          <p id="researchFocus" class="mt-2 text-sm leading-relaxed text-emerald-950/85"></p>
+        </div>
+        <div class="rounded-2xl bg-white/70 border hairline p-4 md:col-span-2">
+          <div class="flex items-start justify-between gap-4">
+            <div>
+              <div class="text-xs font-semibold text-emerald-800 uppercase tracking-wider">Tóm tắt</div>
+              <p id="summary" class="mt-2 text-sm leading-relaxed text-emerald-950/85"></p>
+            </div>
+            <button id="btnPrint" class="no-print shrink-0 rounded-xl px-3 py-2 text-sm font-semibold bg-emerald-700 text-white hover:bg-emerald-800 transition">
+              In / Lưu PDF
+            </button>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </header>
+
+  <main id="main" class="max-w-6xl mx-auto px-4 pb-16">
+    <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+      <!-- Left column -->
+      <section class="glass rounded-3xl p-6" aria-labelledby="personalTitle">
+        <div class="flex items-center justify-between">
+          <h2 id="personalTitle" class="serif text-xl font-bold text-emerald-950">Thông tin cá nhân</h2>
+          <div class="text-xs font-semibold text-emerald-800 bg-emerald-50 border border-emerald-900/10 rounded-full px-3 py-1">Read-only</div>
+        </div>
+
+        <dl class="mt-4 space-y-3" id="personalInfo"></dl>
+
+        <div class="mt-6 rounded-2xl bg-emerald-50/60 border hairline p-4">
+          <div class="text-xs font-semibold text-emerald-800 uppercase tracking-wider">Ghi chú</div>
+          <p class="mt-2 text-sm text-emerald-950/80">
+            Tất cả nội dung được hiển thị từ một cấu hình trong mã nguồn. Bạn chỉnh sửa thông tin bằng cách sửa biến <span class="font-semibold">SITE_DATA</span> trong file <span class="font-semibold">index.html</span> trên GitHub.
+          </p>
+        </div>
+      </section>
+
+      <!-- Right column -->
+      <div class="lg:col-span-2 space-y-6">
+        <section class="glass rounded-3xl p-6" aria-labelledby="workTitle">
+          <div class="flex items-center justify-between gap-4">
+            <h2 id="workTitle" class="serif text-xl font-bold text-emerald-950">Quá trình làm việc</h2>
+            <div class="text-sm text-emerald-900/75">Dạng timeline</div>
+          </div>
+          <ol class="mt-5 space-y-4" id="workTimeline"></ol>
+        </section>
+
+        <section class="glass rounded-3xl p-6" aria-labelledby="skillsTitle">
+          <div class="flex items-center justify-between gap-4">
+            <h2 id="skillsTitle" class="serif text-xl font-bold text-emerald-950">Kỹ năng</h2>
+            <div class="text-sm text-emerald-900/75">Tập trung năng lực nghiên cứu</div>
+          </div>
+          <div class="mt-5 grid grid-cols-1 md:grid-cols-2 gap-4" id="skillsGrid"></div>
+        </section>
+
+        <section class="glass rounded-3xl p-6" aria-labelledby="researchTitle">
+          <h2 id="researchTitle" class="serif text-xl font-bold text-emerald-950">Mô tả hướng nghiên cứu</h2>
+          <div class="mt-4 grid grid-cols-1 md:grid-cols-3 gap-4">
+            <div class="md:col-span-2 rounded-2xl bg-white/70 border hairline p-4">
+              <div class="text-xs font-semibold text-emerald-800 uppercase tracking-wider">Chi tiết</div>
+              <p id="researchDetail" class="mt-2 text-sm leading-relaxed text-emerald-950/85"></p>
+            </div>
+            <div class="rounded-2xl bg-white/70 border hairline p-4">
+              <div class="text-xs font-semibold text-emerald-800 uppercase tracking-wider">Từ khoá</div>
+              <div class="mt-3 flex flex-wrap gap-2" id="researchTags"></div>
+            </div>
+          </div>
+        </section>
+      </div>
+    </div>
+
+    <!-- Owner tools (hidden; unlock via Ctrl+Shift+E + PIN) -->
+    <section id="ownerTools" class="hidden mt-8 glass rounded-3xl p-6 no-print" aria-labelledby="ownerTitle">
+      <div class="flex items-start justify-between gap-4">
+        <div>
+          <h2 id="ownerTitle" class="serif text-xl font-bold text-emerald-950">Owner Tools</h2>
+          <p class="mt-1 text-sm text-emerald-950/75">
+            Công cụ tiện ích để <span class="font-semibold">tải ảnh đại diện</span> và tạo <span class="font-semibold">DataURL</span> (base64) nhằm dán vào code trên GitHub. Thông tin chính vẫn nên chỉnh bằng code để đảm bảo người khác không sửa được.
+          </p>
+        </div>
+        <button id="btnLock" class="rounded-xl px-3 py-2 text-sm font-semibold bg-white/70 border hairline hover:bg-white transition">
+          Khoá lại
+        </button>
+      </div>
+
+      <div class="mt-5 grid grid-cols-1 lg:grid-cols-3 gap-4">
+        <div class="rounded-2xl bg-white/70 border hairline p-4">
+          <div class="text-sm font-semibold text-emerald-950">1) Upload ảnh đại diện</div>
+          <p class="mt-1 text-xs text-emerald-950/70">Ảnh sẽ chỉ thay đổi trong trình duyệt của bạn, không tự ghi lên GitHub.</p>
+
+          <label class="mt-3 block">
+            <span class="text-sm text-emerald-950/85">Chọn ảnh (JPG/PNG/WebP)</span>
+            <input id="avatarFile" type="file" accept="image/*" class="mt-2 block w-full text-sm file:mr-4 file:rounded-xl file:border-0 file:bg-emerald-700 file:px-4 file:py-2 file:text-sm file:font-semibold file:text-white hover:file:bg-emerald-800" />
+          </label>
+
+          <div class="mt-4">
+            <div class="text-xs font-semibold text-emerald-800 uppercase tracking-wider">Preview</div>
+            <div class="mt-2 flex items-center gap-3">
+              <img id="avatarPreview" class="h-16 w-16 rounded-2xl object-cover border border-emerald-900/10" alt="Preview ảnh" />
+              <div class="text-xs text-emerald-950/70">
+                Mẹo: ảnh vuông sẽ hiển thị đẹp nhất.
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="lg:col-span-2 rounded-2xl bg-white/70 border hairline p-4">
+          <div class="text-sm font-semibold text-emerald-950">2) Copy DataURL dán vào code</div>
+          <p class="mt-1 text-xs text-emerald-950/70">
+            Sau khi chọn ảnh, copy chuỗi dưới đây và thay vào <span class="font-semibold">SITE_DATA.person.avatarSrc</span> trong file <span class="font-semibold">index.html</span>.
+          </p>
+
+          <div class="mt-3">
+            <textarea id="avatarDataUrl" class="w-full h-36 rounded-2xl border hairline bg-white/70 p-3 text-xs font-mono" placeholder="DataURL sẽ xuất hiện ở đây..."></textarea>
+            <div class="mt-3 flex flex-wrap gap-2">
+              <button id="btnCopy" class="rounded-xl px-3 py-2 text-sm font-semibold bg-emerald-700 text-white hover:bg-emerald-800 transition">Copy</button>
+              <button id="btnApplyAvatar" class="rounded-xl px-3 py-2 text-sm font-semibold bg-white/70 border hairline hover:bg-white transition">Áp dụng tạm thời lên trang</button>
+              <button id="btnClearLocal" class="rounded-xl px-3 py-2 text-sm font-semibold bg-white/70 border hairline hover:bg-white transition">Xoá avatar local</button>
+            </div>
+            <p id="ownerStatus" class="mt-3 text-sm text-emerald-950/75"></p>
+          </div>
+        </div>
+      </div>
+
+      <div class="mt-5 rounded-2xl bg-emerald-50/60 border hairline p-4">
+        <div class="text-xs font-semibold text-emerald-800 uppercase tracking-wider">Bảo mật (thực tế)</div>
+        <p class="mt-2 text-sm text-emerald-950/80 leading-relaxed">
+          Website GitHub Pages là dạng tĩnh, nên không thể bảo mật tuyệt đối như hệ thống có đăng nhập. Ở đây:
+          <span class="font-semibold">người xem</span> chỉ có giao diện xem; còn thay đổi nội dung hiển thị công khai phải thông qua việc bạn <span class="font-semibold">sửa code và commit</span> trên GitHub.
+        </p>
+      </div>
+    </section>
+
+    <footer class="mt-10 text-center text-sm text-emerald-950/70 no-print">
+      <div class="max-w-3xl mx-auto">
+        <p>
+          © <span id="year"></span> <span id="footerName"></span> — Trang cá nhân khoa học về biến đổi khí hậu.
+        </p>
+        <p class="mt-2">
+          Gợi ý: sửa dữ liệu trong biến <span class="font-semibold">SITE_DATA</span>. Nhấn <span class="kbd">Ctrl</span> + <span class="kbd">Shift</span> + <span class="kbd">E</span> để mở Owner Tools.
+        </p>
+      </div>
     </footer>
+  </main>
 
-    <!-- JavaScript for mobile menu -->
-    <script>
-        // Mobile menu toggle
-        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
-        const mobileMenu = document.getElementById('mobileMenu');
-        
-        mobileMenuBtn.addEventListener('click', () => {
-            mobileMenu.classList.toggle('hidden');
-        });
-        
-        // Close mobile menu when clicking a link
-        mobileMenu.querySelectorAll('a').forEach(link => {
-            link.addEventListener('click', () => {
-                mobileMenu.classList.add('hidden');
-            });
-        });
-        
-        // Smooth scroll for navigation links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
-                    });
-                }
-            });
-        });
-        
-        // Add scroll animation for cards
-        const observerOptions = {
-            threshold: 0.1,
-            rootMargin: '0px 0px -50px 0px'
+  <script>
+    /************************************************************
+     * CHỈNH SỬA WEBSITE (BẠN SỬA TẠI ĐÂY RỒI COMMIT LÊN GITHUB)
+     * - Người truy cập chỉ xem, không có form chỉnh sửa.
+     * - Muốn đổi avatar công khai: thay person.avatarSrc thành link ảnh (trong repo) hoặc DataURL.
+     ************************************************************/
+    const SITE_DATA = {
+      person: {
+        fullName: "TS. Nguyễn Văn A",
+        birthYear: "1988",
+        phone: "+84 9xx xxx xxx",
+        specialty: "Khoa học khí hậu & mô hình hoá hệ thống Trái Đất",
+        email: "yourname@domain.com",
+        location: "Việt Nam",
+        website: "https://your-website.example",
+        scholar: "https://scholar.google.com/",
+        orcid: "https://orcid.org/0000-0000-0000-0000",
+        // Gợi ý: dùng ảnh trong repo (vd: ./assets/avatar.jpg). Bạn có thể tạo DataURL bằng Owner Tools.
+        avatarSrc: ""
+      },
+      headline: "Nghiên cứu tác động, thích ứng và giảm nhẹ biến đổi khí hậu — dựa trên dữ liệu, mô hình và chính sách.",
+      summary:
+        "Tôi tập trung vào tương tác khí hậu–xã hội, rủi ro thiên tai liên quan đến khí hậu, và đánh giá giải pháp giảm phát thải. Mục tiêu là chuyển hoá kết quả nghiên cứu thành khuyến nghị có thể áp dụng cho quy hoạch và quản trị rủi ro.",
+      researchFocus:
+        "Mô hình hoá khí hậu khu vực, rủi ro cực đoan (nhiệt, hạn, mưa lớn), và tích hợp dữ liệu quan trắc–vệ tinh để hỗ trợ ra quyết định.",
+      researchDetail:
+        "Hướng nghiên cứu của tôi bao gồm: (1) xây dựng và hiệu chỉnh mô hình khí hậu khu vực; (2) đánh giá xu thế cực đoan khí hậu và các chỉ số rủi ro; (3) kết hợp dữ liệu vệ tinh, tái phân tích và quan trắc mặt đất; (4) lượng hoá bất định; và (5) truyền thông khoa học cho các bên liên quan (chính quyền, doanh nghiệp, cộng đồng).",
+      researchTags: [
+        "Climate extremes",
+        "Downscaling",
+        "Remote sensing",
+        "Risk assessment",
+        "Adaptation",
+        "Mitigation",
+        "Uncertainty"
+      ],
+      work: [
+        {
+          org: "Viện Nghiên cứu Khí tượng & Môi trường",
+          start: "2021",
+          end: "Hiện tại",
+          role: "Nhà nghiên cứu chính",
+          description:
+            "Dẫn dắt nhóm phân tích cực đoan khí hậu; phát triển quy trình đánh giá rủi ro theo kịch bản; phối hợp dự án với đối tác quốc tế."
+        },
+        {
+          org: "Đại học B (Khoa Môi trường)",
+          start: "2017",
+          end: "2021",
+          role: "Giảng viên / Nghiên cứu viên",
+          description:
+            "Giảng dạy khí hậu học; hướng dẫn luận văn; công bố bài báo về downscaling và tác động hạn hán; xây dựng bộ dữ liệu cho khu vực."
+        },
+        {
+          org: "Trung tâm Dữ liệu Khí tượng",
+          start: "2012",
+          end: "2017",
+          role: "Chuyên viên phân tích dữ liệu",
+          description:
+            "Xử lý chuỗi số liệu quan trắc; kiểm định chất lượng; xây dựng dashboard nội bộ; hỗ trợ báo cáo đánh giá khí hậu định kỳ."
+        }
+      ],
+      skills: [
+        {
+          name: "Mô hình hoá khí hậu",
+          level: 90,
+          description: "WRF/RegCM; hiệu chỉnh tham số; đánh giá hiệu năng mô hình theo chỉ số cực đoan."
+        },
+        {
+          name: "Phân tích dữ liệu & thống kê",
+          level: 88,
+          description: "Python/R; bootstrap; extreme value theory; phân rã xu thế; kiểm định bất định."
+        },
+        {
+          name: "GIS & viễn thám",
+          level: 78,
+          description: "QGIS/ArcGIS; Earth Engine; xử lý raster; chỉ số NDVI/LST; tích hợp dữ liệu vệ tinh."
+        },
+        {
+          name: "Viết & truyền thông khoa học",
+          level: 82,
+          description: "Viết bài báo, policy brief; trình bày cho cơ quan quản lý; trực quan hoá dữ liệu." 
+        }
+      ]
+    };
+
+    /************************************************************
+     * OWNER PIN (tuỳ chọn): dùng để mở Owner Tools.
+     * - Đổi PIN trước khi public.
+     * - Đây không phải cơ chế bảo mật tuyệt đối (vì site tĩnh).
+     ************************************************************/
+    const OWNER_PIN = "1234";
+
+    // Helpers
+    const $ = (sel, root = document) => root.querySelector(sel);
+    const $$ = (sel, root = document) => Array.from(root.querySelectorAll(sel));
+
+    function escapeHtml(str) {
+      return String(str ?? "")
+        .replaceAll("&", "&amp;")
+        .replaceAll("<", "&lt;")
+        .replaceAll(">", "&gt;")
+        .replaceAll('"', "&quot;")
+        .replaceAll("'", "&#039;");
+    }
+
+    function makeIcon(type) {
+      // Minimal inline icons (SVG) to avoid extra dependencies
+      const base = "inline-block align-[-2px]";
+      if (type === "email") return `<svg class="${base}" width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 7.5A3.5 3.5 0 0 1 7.5 4h9A3.5 3.5 0 0 1 20 7.5v9A3.5 3.5 0 0 1 16.5 20h-9A3.5 3.5 0 0 1 4 16.5v-9Z" stroke="currentColor" stroke-width="1.7"/><path d="m6.5 8 5.5 4 5.5-4" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>`;
+      if (type === "link") return `<svg class="${base}" width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M9.5 14.5 14.5 9.5" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/><path d="M8 12a4 4 0 0 1 4-4h2" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/><path d="M16 12a4 4 0 0 1-4 4h-2" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg>`;
+      if (type === "scholar") return `<svg class="${base}" width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 3 2.5 8 12 13l9.5-5L12 3Z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/><path d="M5.5 10v6.5c0 .9 3 3 6.5 3s6.5-2.1 6.5-3V10" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg>`;
+      if (type === "orcid") return `<svg class="${base}" width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 21a9 9 0 1 0 0-18 9 9 0 0 0 0 18Z" stroke="currentColor" stroke-width="1.7"/><path d="M9 8.5V16" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/><path d="M12 16V10.5h2.1c1.7 0 2.9 1 2.9 2.75S15.8 16 14.1 16H12Z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/></svg>`;
+      return "";
+    }
+
+    function fallbackAvatarSvg(fullName) {
+      const initials = (fullName || "").trim().split(/\s+/).slice(-2).map(w => w[0]?.toUpperCase() || "").join("").slice(0,2) || "CS";
+      const svg = `
+        <svg xmlns="http://www.w3.org/2000/svg" width="256" height="256" viewBox="0 0 256 256">
+          <defs>
+            <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0" stop-color="#dff7e7"/>
+              <stop offset="1" stop-color="#c6f0dc"/>
+            </linearGradient>
+          </defs>
+          <rect width="256" height="256" rx="44" fill="url(#g)"/>
+          <circle cx="190" cy="72" r="42" fill="#0f766e" opacity="0.18"/>
+          <circle cx="70" cy="190" r="54" fill="#16a34a" opacity="0.14"/>
+          <text x="128" y="148" text-anchor="middle" font-size="84" font-family="Inter, system-ui" fill="#0b3b2b" font-weight="700">${escapeHtml(initials)}</text>
+        </svg>
+      `.trim();
+      return `data:image/svg+xml;charset=utf-8,${encodeURIComponent(svg)}`;
+    }
+
+    function setAvatar(src) {
+      const img = $("#avatarImg");
+      const preview = $("#avatarPreview");
+      const fullName = SITE_DATA.person.fullName;
+
+      const finalSrc = src && String(src).trim().length > 0 ? src : fallbackAvatarSvg(fullName);
+      img.src = finalSrc;
+      if (preview) preview.src = finalSrc;
+    }
+
+    function badgeLink({ label, href, icon }) {
+      const safeLabel = escapeHtml(label);
+      const safeHref = escapeHtml(href);
+      return `
+        <a class="inline-flex items-center gap-2 rounded-full px-3 py-1.5 text-sm font-semibold bg-white/70 border hairline hover:bg-white transition text-emerald-900" href="${safeHref}" target="_blank" rel="noreferrer">
+          <span class="text-emerald-800">${makeIcon(icon)}</span>
+          <span>${safeLabel}</span>
+        </a>
+      `.trim();
+    }
+
+    function render() {
+      $("#fullName").textContent = SITE_DATA.person.fullName;
+      $("#headline").textContent = SITE_DATA.headline;
+      $("#researchFocus").textContent = SITE_DATA.researchFocus;
+      $("#summary").textContent = SITE_DATA.summary;
+      $("#researchDetail").textContent = SITE_DATA.researchDetail;
+      $("#year").textContent = String(new Date().getFullYear());
+      $("#footerName").textContent = SITE_DATA.person.fullName;
+
+      // Avatar: prefer localStorage override (owner preview), then SITE_DATA
+      const localAvatar = localStorage.getItem("owner_avatar_override") || "";
+      setAvatar(localAvatar || SITE_DATA.person.avatarSrc);
+
+      // Quick links
+      const links = [];
+      if (SITE_DATA.person.email) links.push({ label: SITE_DATA.person.email, href: `mailto:${SITE_DATA.person.email}`, icon: "email" });
+      if (SITE_DATA.person.website) links.push({ label: "Website", href: SITE_DATA.person.website, icon: "link" });
+      if (SITE_DATA.person.scholar) links.push({ label: "Google Scholar", href: SITE_DATA.person.scholar, icon: "scholar" });
+      if (SITE_DATA.person.orcid) links.push({ label: "ORCID", href: SITE_DATA.person.orcid, icon: "orcid" });
+      $("#quickLinks").innerHTML = links.map(badgeLink).join("\n");
+
+      // Personal info
+      const info = [
+        { k: "Họ tên", v: SITE_DATA.person.fullName },
+        { k: "Năm sinh", v: SITE_DATA.person.birthYear },
+        { k: "Số điện thoại", v: SITE_DATA.person.phone },
+        { k: "Chuyên ngành", v: SITE_DATA.person.specialty },
+        { k: "Email", v: SITE_DATA.person.email },
+        { k: "Khu vực", v: SITE_DATA.person.location }
+      ].filter(x => x.v && String(x.v).trim() !== "");
+
+      $("#personalInfo").innerHTML = info.map(({k,v}) => `
+        <div class="grid grid-cols-3 gap-3 items-start">
+          <dt class="text-sm font-semibold text-emerald-950/80">${escapeHtml(k)}</dt>
+          <dd class="col-span-2 text-sm text-emerald-950/85">${escapeHtml(v)}</dd>
+        </div>
+      `.trim()).join("\n");
+
+      // Work timeline
+      const workEl = $("#workTimeline");
+      workEl.innerHTML = SITE_DATA.work.map((w, idx) => {
+        const isLast = idx === SITE_DATA.work.length - 1;
+        const range = `${escapeHtml(w.start)} — ${escapeHtml(w.end)}`;
+        return `
+          <li class="relative pl-8">
+            <span class="absolute left-2 top-2 h-3 w-3 rounded-full bg-emerald-700"></span>
+            ${isLast ? "" : `<span class=\"absolute left-[13px] top-6 bottom-0 w-px bg-emerald-900/15\"></span>`}
+            <div class="rounded-2xl bg-white/70 border hairline p-4">
+              <div class="flex flex-wrap items-baseline justify-between gap-2">
+                <div>
+                  <div class="text-sm font-bold text-emerald-950">${escapeHtml(w.org)}</div>
+                  <div class="text-sm text-emerald-950/80">${escapeHtml(w.role || "")}</div>
+                </div>
+                <div class="text-xs font-semibold text-emerald-800 bg-emerald-50 border border-emerald-900/10 rounded-full px-3 py-1">${range}</div>
+              </div>
+              <p class="mt-3 text-sm leading-relaxed text-emerald-950/85">${escapeHtml(w.description)}</p>
+            </div>
+          </li>
+        `.trim();
+      }).join("\n");
+
+      // Skills
+      const skillsEl = $("#skillsGrid");
+      skillsEl.innerHTML = SITE_DATA.skills.map(s => {
+        const pct = Math.max(0, Math.min(100, Number(s.level ?? 0)));
+        return `
+          <article class="rounded-2xl bg-white/70 border hairline p-4">
+            <div class="flex items-start justify-between gap-3">
+              <div>
+                <h3 class="text-sm font-bold text-emerald-950">${escapeHtml(s.name)}</h3>
+                <p class="mt-1 text-sm text-emerald-950/80 leading-relaxed">${escapeHtml(s.description)}</p>
+              </div>
+              <div class="shrink-0 text-xs font-semibold text-emerald-800 bg-emerald-50 border border-emerald-900/10 rounded-full px-3 py-1">${pct}%</div>
+            </div>
+            <div class="mt-3 h-2 rounded-full bg-emerald-900/10 overflow-hidden" aria-hidden="true">
+              <div class="h-full rounded-full" style="width:${pct}%; background: linear-gradient(90deg, rgba(22,163,74,.95), rgba(15,118,110,.95));"></div>
+            </div>
+          </article>
+        `.trim();
+      }).join("\n");
+
+      // Research tags
+      const tagsEl = $("#researchTags");
+      tagsEl.innerHTML = (SITE_DATA.researchTags || []).map(t => `
+        <span class="inline-flex items-center rounded-full px-3 py-1.5 text-xs font-semibold bg-emerald-50 border border-emerald-900/10 text-emerald-900">${escapeHtml(t)}</span>
+      `.trim()).join("\n");
+    }
+
+    // Owner tools
+    let ownerUnlocked = false;
+
+    function showOwnerTools(show) {
+      const el = $("#ownerTools");
+      if (!el) return;
+      el.classList.toggle("hidden", !show);
+    }
+
+    async function copyToClipboard(text) {
+      try {
+        await navigator.clipboard.writeText(text);
+        return true;
+      } catch (_) {
+        return false;
+      }
+    }
+
+    function setOwnerStatus(msg) {
+      $("#ownerStatus").textContent = msg;
+    }
+
+    function promptUnlock() {
+      const entered = prompt("Nhập PIN để mở Owner Tools:");
+      if (entered === null) return;
+      if (String(entered) === String(OWNER_PIN)) {
+        ownerUnlocked = true;
+        showOwnerTools(true);
+        setOwnerStatus("Đã mở Owner Tools. (Nhắc: thay đổi công khai vẫn cần sửa code & commit lên GitHub)");
+      } else {
+        ownerUnlocked = false;
+        showOwnerTools(false);
+        alert("PIN không đúng.");
+      }
+    }
+
+    function wireEvents() {
+      $("#btnPrint").addEventListener("click", () => window.print());
+
+      document.addEventListener("keydown", (e) => {
+        if (e.ctrlKey && e.shiftKey && (e.key === "E" || e.key === "e")) {
+          e.preventDefault();
+          if (!ownerUnlocked) promptUnlock();
+          else showOwnerTools(!$("#ownerTools").classList.contains("hidden"));
+        }
+      });
+
+      $("#btnLock").addEventListener("click", () => {
+        ownerUnlocked = false;
+        showOwnerTools(false);
+      });
+
+      $("#avatarFile").addEventListener("change", async (e) => {
+        const file = e.target.files && e.target.files[0];
+        if (!file) return;
+
+        if (!file.type.startsWith("image/")) {
+          setOwnerStatus("File không phải ảnh.");
+          return;
+        }
+        if (file.size > 2.5 * 1024 * 1024) {
+          setOwnerStatus("Ảnh khá lớn (>2.5MB). Nên nén để website tải nhanh.");
+        } else {
+          setOwnerStatus("Đã tải ảnh. Bạn có thể copy DataURL và dán vào code.");
+        }
+
+        const reader = new FileReader();
+        reader.onload = () => {
+          const dataUrl = String(reader.result || "");
+          $("#avatarDataUrl").value = dataUrl;
+          $("#avatarPreview").src = dataUrl;
         };
-        
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.style.opacity = '1';
-                    entry.target.style.transform = 'translateY(0)';
-                }
-            });
-        }, observerOptions);
-        
-        document.querySelectorAll('.card-hover').forEach(card => {
-            card.style.opacity = '0';
-            card.style.transform = 'translateY(20px)';
-            card.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
-            observer.observe(card);
-        });
-    </script>
+        reader.readAsDataURL(file);
+      });
+
+      $("#btnCopy").addEventListener("click", async () => {
+        const text = $("#avatarDataUrl").value.trim();
+        if (!text) return setOwnerStatus("Chưa có DataURL để copy.");
+        const ok = await copyToClipboard(text);
+        setOwnerStatus(ok ? "Đã copy vào clipboard." : "Không copy được (trình duyệt chặn). Hãy copy thủ công.");
+      });
+
+      $("#btnApplyAvatar").addEventListener("click", () => {
+        const text = $("#avatarDataUrl").value.trim();
+        if (!text) return setOwnerStatus("Chưa có DataURL để áp dụng.");
+        localStorage.setItem("owner_avatar_override", text);
+        setAvatar(text);
+        setOwnerStatus("Đã áp dụng avatar (local) trong trình duyệt này. Để public: dán vào SITE_DATA.person.avatarSrc và commit.");
+      });
+
+      $("#btnClearLocal").addEventListener("click", () => {
+        localStorage.removeItem("owner_avatar_override");
+        setAvatar(SITE_DATA.person.avatarSrc);
+        setOwnerStatus("Đã xoá avatar local. Trang dùng lại avatar trong code.");
+      });
+    }
+
+    // Init
+    render();
+    wireEvents();
+  </script>
 </body>
 </html>
