@@ -1,0 +1,596 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nhà Khoa Học Khí Hậu | Trang Cá Nhân</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Source+Sans+3:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-green: #2D5A27;
+            --light-green: #4A7C43;
+            --pale-green: #E8F5E9;
+            --accent-green: #81C784;
+            --dark-text: #1B3A1A;
+            --soft-white: #FAFFFE;
+        }
+        
+        body {
+            font-family: 'Source Sans 3', sans-serif;
+            background: linear-gradient(135deg, var(--soft-white) 0%, var(--pale-green) 100%);
+            min-height: 100vh;
+        }
+        
+        .font-serif-display {
+            font-family: 'Playfair Display', serif;
+        }
+        
+        .bg-pattern {
+            background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%234A7C43' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+        }
+        
+        .leaf-decoration::before {
+            content: '🌿';
+            position: absolute;
+            font-size: 1.5rem;
+            opacity: 0.6;
+        }
+        
+        .card-hover {
+            transition: all 0.3s ease;
+        }
+        
+        .card-hover:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 40px rgba(45, 90, 39, 0.15);
+        }
+        
+        .timeline-line {
+            background: linear-gradient(180deg, var(--accent-green), var(--primary-green));
+        }
+        
+        .avatar-ring {
+            background: linear-gradient(135deg, var(--primary-green), var(--accent-green));
+            padding: 4px;
+        }
+        
+        .section-divider {
+            height: 2px;
+            background: linear-gradient(90deg, transparent, var(--accent-green), transparent);
+        }
+    </style>
+</head>
+<body class="bg-pattern">
+    <!-- ===== NAVIGATION ===== -->
+    <nav class="fixed top-0 left-0 right-0 bg-white/90 backdrop-blur-md shadow-sm z-50">
+        <div class="max-w-6xl mx-auto px-4 py-3">
+            <div class="flex items-center justify-between">
+                <div class="flex items-center gap-2">
+                    <span class="text-2xl">🌍</span>
+                    <span class="font-serif-display text-lg font-semibold text-[#2D5A27]">Climate Scientist</span>
+                </div>
+                <div class="hidden md:flex items-center gap-6">
+                    <a href="#about" class="text-[#1B3A1A] hover:text-[#4A7C43] transition-colors font-medium">Giới thiệu</a>
+                    <a href="#experience" class="text-[#1B3A1A] hover:text-[#4A7C43] transition-colors font-medium">Kinh nghiệm</a>
+                    <a href="#skills" class="text-[#1B3A1A] hover:text-[#4A7C43] transition-colors font-medium">Kỹ năng</a>
+                    <a href="#research" class="text-[#1B3A1A] hover:text-[#4A7C43] transition-colors font-medium">Nghiên cứu</a>
+                    <a href="#contact" class="bg-[#2D5A27] text-white px-4 py-2 rounded-full hover:bg-[#4A7C43] transition-colors font-medium">Liên hệ</a>
+                </div>
+                <!-- Mobile menu button -->
+                <button id="mobileMenuBtn" class="md:hidden text-[#2D5A27] p-2">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+                    </svg>
+                </button>
+            </div>
+            <!-- Mobile menu -->
+            <div id="mobileMenu" class="hidden md:hidden mt-4 pb-4 border-t border-[#E8F5E9]">
+                <div class="flex flex-col gap-3 pt-4">
+                    <a href="#about" class="text-[#1B3A1A] hover:text-[#4A7C43] font-medium">Giới thiệu</a>
+                    <a href="#experience" class="text-[#1B3A1A] hover:text-[#4A7C43] font-medium">Kinh nghiệm</a>
+                    <a href="#skills" class="text-[#1B3A1A] hover:text-[#4A7C43] font-medium">Kỹ năng</a>
+                    <a href="#research" class="text-[#1B3A1A] hover:text-[#4A7C43] font-medium">Nghiên cứu</a>
+                    <a href="#contact" class="text-[#1B3A1A] hover:text-[#4A7C43] font-medium">Liên hệ</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- ===== HERO SECTION WITH PERSONAL INFO ===== -->
+    <section id="about" class="pt-24 pb-16">
+        <div class="max-w-6xl mx-auto px-4">
+            <div class="bg-white rounded-3xl shadow-xl overflow-hidden">
+                <!-- Banner decorative -->
+                <div class="h-32 bg-gradient-to-r from-[#2D5A27] via-[#4A7C43] to-[#81C784] relative">
+                    <div class="absolute inset-0 opacity-20">
+                        <svg class="w-full h-full" viewBox="0 0 100 100" preserveAspectRatio="none">
+                            <path d="M0,50 Q25,30 50,50 T100,50 V100 H0 Z" fill="white"/>
+                        </svg>
+                    </div>
+                </div>
+                
+                <div class="px-6 md:px-12 pb-10">
+                    <div class="flex flex-col md:flex-row gap-8 -mt-16">
+                        <!-- Avatar Section -->
+                        <div class="flex-shrink-0">
+                            <div class="avatar-ring rounded-full w-40 h-40 mx-auto md:mx-0">
+                                <!-- ========================================
+                                     HƯỚNG DẪN THAY ĐỔI ẢNH ĐẠI DIỆN:
+                                     Thay đổi đường dẫn trong src="..." 
+                                     bằng link ảnh của bạn
+                                     Ví dụ: src="images/avatar.jpg"
+                                     hoặc: src="https://link-anh-cua-ban.jpg"
+                                ======================================== -->
+                                <img 
+                                    src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=400&fit=crop&crop=face" 
+                                    alt="Ảnh đại diện"
+                                    class="w-full h-full rounded-full object-cover bg-white"
+                                    onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22%3E%3Crect fill=%22%23E8F5E9%22 width=%22100%22 height=%22100%22/%3E%3Ctext x=%2250%22 y=%2255%22 text-anchor=%22middle%22 fill=%22%232D5A27%22 font-size=%2240%22%3E👤%3C/text%3E%3C/svg%3E'"
+                                >
+                            </div>
+                        </div>
+                        
+                        <!-- Personal Information -->
+                        <div class="flex-grow pt-4 md:pt-8">
+                            <!-- ========================================
+                                 THÔNG TIN CÁ NHÂN - CHỈNH SỬA TẠI ĐÂY
+                            ======================================== -->
+                            <h1 class="font-serif-display text-3xl md:text-4xl font-bold text-[#2D5A27] text-center md:text-left">
+                                Nguyễn Văn An
+                            </h1>
+                            <p class="text-[#4A7C43] text-lg font-medium mt-1 text-center md:text-left">
+                                Tiến sĩ Khoa học Khí hậu & Môi trường
+                            </p>
+                            
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-6">
+                                <div class="flex items-center gap-3 text-[#1B3A1A]">
+                                    <span class="w-10 h-10 bg-[#E8F5E9] rounded-full flex items-center justify-center">
+                                        <svg class="w-5 h-5 text-[#2D5A27]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/>
+                                        </svg>
+                                    </span>
+                                    <div>
+                                        <p class="text-sm text-gray-500">Năm sinh</p>
+                                        <p class="font-medium">1985</p>
+                                    </div>
+                                </div>
+                                
+                                <div class="flex items-center gap-3 text-[#1B3A1A]">
+                                    <span class="w-10 h-10 bg-[#E8F5E9] rounded-full flex items-center justify-center">
+                                        <svg class="w-5 h-5 text-[#2D5A27]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/>
+                                        </svg>
+                                    </span>
+                                    <div>
+                                        <p class="text-sm text-gray-500">Điện thoại</p>
+                                        <p class="font-medium">+84 912 345 678</p>
+                                    </div>
+                                </div>
+                                
+                                <div class="flex items-center gap-3 text-[#1B3A1A]">
+                                    <span class="w-10 h-10 bg-[#E8F5E9] rounded-full flex items-center justify-center">
+                                        <svg class="w-5 h-5 text-[#2D5A27]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
+                                        </svg>
+                                    </span>
+                                    <div>
+                                        <p class="text-sm text-gray-500">Email</p>
+                                        <p class="font-medium">nguyenvanan@climate.edu.vn</p>
+                                    </div>
+                                </div>
+                                
+                                <div class="flex items-center gap-3 text-[#1B3A1A]">
+                                    <span class="w-10 h-10 bg-[#E8F5E9] rounded-full flex items-center justify-center">
+                                        <svg class="w-5 h-5 text-[#2D5A27]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z"/>
+                                        </svg>
+                                    </span>
+                                    <div>
+                                        <p class="text-sm text-gray-500">Chuyên ngành</p>
+                                        <p class="font-medium">Biến đổi khí hậu & Phát triển bền vững</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== WORK EXPERIENCE ===== -->
+    <section id="experience" class="py-16">
+        <div class="max-w-6xl mx-auto px-4">
+            <div class="text-center mb-12">
+                <span class="inline-block px-4 py-1 bg-[#E8F5E9] text-[#2D5A27] rounded-full text-sm font-medium mb-3">
+                    🏛️ Sự nghiệp
+                </span>
+                <h2 class="font-serif-display text-3xl md:text-4xl font-bold text-[#2D5A27]">
+                    Quá Trình Làm Việc
+                </h2>
+            </div>
+            
+            <!-- ========================================
+                 QUÁ TRÌNH LÀM VIỆC - CHỈNH SỬA TẠI ĐÂY
+                 Sao chép một khối <div class="relative pl-8 pb-10">...</div>
+                 để thêm công việc mới
+            ======================================== -->
+            <div class="relative">
+                <!-- Timeline line -->
+                <div class="absolute left-[11px] top-2 bottom-10 w-0.5 timeline-line rounded-full hidden md:block"></div>
+                
+                <!-- Experience Item 1 -->
+                <div class="relative pl-8 pb-10">
+                    <div class="absolute left-0 top-2 w-6 h-6 bg-[#2D5A27] rounded-full border-4 border-white shadow-md hidden md:block"></div>
+                    <div class="bg-white rounded-2xl p-6 shadow-lg card-hover ml-0 md:ml-4">
+                        <div class="flex flex-wrap items-center gap-3 mb-3">
+                            <span class="px-3 py-1 bg-[#2D5A27] text-white text-sm font-medium rounded-full">
+                                2020 - Hiện tại
+                            </span>
+                            <span class="text-[#4A7C43] font-medium">Phó Giáo sư</span>
+                        </div>
+                        <h3 class="font-serif-display text-xl font-semibold text-[#1B3A1A] mb-2">
+                            Viện Nghiên cứu Khí hậu Quốc gia
+                        </h3>
+                        <p class="text-gray-600 leading-relaxed">
+                            Lãnh đạo nhóm nghiên cứu về tác động của biến đổi khí hậu đến vùng đồng bằng sông Cửu Long. 
+                            Phát triển các mô hình dự báo và đề xuất giải pháp thích ứng cho cộng đồng địa phương. 
+                            Hướng dẫn 5 nghiên cứu sinh tiến sĩ và 12 học viên cao học.
+                        </p>
+                    </div>
+                </div>
+                
+                <!-- Experience Item 2 -->
+                <div class="relative pl-8 pb-10">
+                    <div class="absolute left-0 top-2 w-6 h-6 bg-[#4A7C43] rounded-full border-4 border-white shadow-md hidden md:block"></div>
+                    <div class="bg-white rounded-2xl p-6 shadow-lg card-hover ml-0 md:ml-4">
+                        <div class="flex flex-wrap items-center gap-3 mb-3">
+                            <span class="px-3 py-1 bg-[#4A7C43] text-white text-sm font-medium rounded-full">
+                                2015 - 2020
+                            </span>
+                            <span class="text-[#4A7C43] font-medium">Nghiên cứu viên chính</span>
+                        </div>
+                        <h3 class="font-serif-display text-xl font-semibold text-[#1B3A1A] mb-2">
+                            Đại học Khoa học Tự nhiên - ĐHQG Hà Nội
+                        </h3>
+                        <p class="text-gray-600 leading-relaxed">
+                            Thực hiện các dự án nghiên cứu về khí nhà kính và chu trình carbon trong hệ sinh thái rừng ngập mặn. 
+                            Công bố 15 bài báo khoa học trên các tạp chí quốc tế uy tín (ISI/Scopus). 
+                            Tham gia xây dựng chương trình đào tạo sau đại học về biến đổi khí hậu.
+                        </p>
+                    </div>
+                </div>
+                
+                <!-- Experience Item 3 -->
+                <div class="relative pl-8 pb-10">
+                    <div class="absolute left-0 top-2 w-6 h-6 bg-[#81C784] rounded-full border-4 border-white shadow-md hidden md:block"></div>
+                    <div class="bg-white rounded-2xl p-6 shadow-lg card-hover ml-0 md:ml-4">
+                        <div class="flex flex-wrap items-center gap-3 mb-3">
+                            <span class="px-3 py-1 bg-[#81C784] text-white text-sm font-medium rounded-full">
+                                2010 - 2015
+                            </span>
+                            <span class="text-[#4A7C43] font-medium">Nghiên cứu sinh</span>
+                        </div>
+                        <h3 class="font-serif-display text-xl font-semibold text-[#1B3A1A] mb-2">
+                            ETH Zurich, Thụy Sĩ
+                        </h3>
+                        <p class="text-gray-600 leading-relaxed">
+                            Hoàn thành luận án tiến sĩ về "Mô hình hóa tác động của biến đổi khí hậu đến an ninh lương thực vùng Đông Nam Á". 
+                            Tham gia các dự án hợp tác quốc tế với IPCC. 
+                            Nhận học bổng nghiên cứu xuất sắc của Chính phủ Thụy Sĩ.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== SKILLS ===== -->
+    <section id="skills" class="py-16 bg-white/50">
+        <div class="max-w-6xl mx-auto px-4">
+            <div class="text-center mb-12">
+                <span class="inline-block px-4 py-1 bg-[#E8F5E9] text-[#2D5A27] rounded-full text-sm font-medium mb-3">
+                    💡 Năng lực
+                </span>
+                <h2 class="font-serif-display text-3xl md:text-4xl font-bold text-[#2D5A27]">
+                    Kỹ Năng Chuyên Môn
+                </h2>
+            </div>
+            
+            <!-- ========================================
+                 KỸ NĂNG - CHỈNH SỬA TẠI ĐÂY
+                 Sao chép một khối <div class="bg-white rounded-2xl...">...</div>
+                 để thêm kỹ năng mới
+            ======================================== -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- Skill 1 -->
+                <div class="bg-white rounded-2xl p-6 shadow-lg card-hover border-l-4 border-[#2D5A27]">
+                    <div class="w-12 h-12 bg-[#E8F5E9] rounded-xl flex items-center justify-center mb-4">
+                        <span class="text-2xl">🌡️</span>
+                    </div>
+                    <h3 class="font-serif-display text-lg font-semibold text-[#1B3A1A] mb-2">
+                        Mô hình hóa khí hậu
+                    </h3>
+                    <p class="text-gray-600 text-sm leading-relaxed">
+                        Sử dụng thành thạo các mô hình khí hậu toàn cầu (GCM) và khu vực (RCM). 
+                        Có kinh nghiệm với CMIP6, WRF, và các công cụ downscaling thống kê.
+                    </p>
+                </div>
+                
+                <!-- Skill 2 -->
+                <div class="bg-white rounded-2xl p-6 shadow-lg card-hover border-l-4 border-[#4A7C43]">
+                    <div class="w-12 h-12 bg-[#E8F5E9] rounded-xl flex items-center justify-center mb-4">
+                        <span class="text-2xl">📊</span>
+                    </div>
+                    <h3 class="font-serif-display text-lg font-semibold text-[#1B3A1A] mb-2">
+                        Phân tích dữ liệu khí hậu
+                    </h3>
+                    <p class="text-gray-600 text-sm leading-relaxed">
+                        Xử lý và phân tích dữ liệu khí hậu quy mô lớn bằng Python, R, và MATLAB. 
+                        Ứng dụng machine learning trong dự báo khí hậu và phát hiện xu hướng.
+                    </p>
+                </div>
+                
+                <!-- Skill 3 -->
+                <div class="bg-white rounded-2xl p-6 shadow-lg card-hover border-l-4 border-[#81C784]">
+                    <div class="w-12 h-12 bg-[#E8F5E9] rounded-xl flex items-center justify-center mb-4">
+                        <span class="text-2xl">🗺️</span>
+                    </div>
+                    <h3 class="font-serif-display text-lg font-semibold text-[#1B3A1A] mb-2">
+                        GIS & Viễn thám
+                    </h3>
+                    <p class="text-gray-600 text-sm leading-relaxed">
+                        Phân tích không gian và xử lý ảnh vệ tinh. Thành thạo ArcGIS, QGIS, Google Earth Engine 
+                        trong đánh giá tác động môi trường và biến đổi sử dụng đất.
+                    </p>
+                </div>
+                
+                <!-- Skill 4 -->
+                <div class="bg-white rounded-2xl p-6 shadow-lg card-hover border-l-4 border-[#2D5A27]">
+                    <div class="w-12 h-12 bg-[#E8F5E9] rounded-xl flex items-center justify-center mb-4">
+                        <span class="text-2xl">📝</span>
+                    </div>
+                    <h3 class="font-serif-display text-lg font-semibold text-[#1B3A1A] mb-2">
+                        Viết báo cáo khoa học
+                    </h3>
+                    <p class="text-gray-600 text-sm leading-relaxed">
+                        Công bố hơn 30 bài báo trên tạp chí quốc tế. Kinh nghiệm viết đề xuất dự án 
+                        và báo cáo chính sách cho các tổ chức quốc tế (UNDP, World Bank, ADB).
+                    </p>
+                </div>
+                
+                <!-- Skill 5 -->
+                <div class="bg-white rounded-2xl p-6 shadow-lg card-hover border-l-4 border-[#4A7C43]">
+                    <div class="w-12 h-12 bg-[#E8F5E9] rounded-xl flex items-center justify-center mb-4">
+                        <span class="text-2xl">🎤</span>
+                    </div>
+                    <h3 class="font-serif-display text-lg font-semibold text-[#1B3A1A] mb-2">
+                        Truyền thông khoa học
+                    </h3>
+                    <p class="text-gray-600 text-sm leading-relaxed">
+                        Diễn giả tại nhiều hội nghị quốc tế về khí hậu. Có khả năng trình bày 
+                        các vấn đề khoa học phức tạp một cách dễ hiểu cho công chúng và nhà hoạch định chính sách.
+                    </p>
+                </div>
+                
+                <!-- Skill 6 -->
+                <div class="bg-white rounded-2xl p-6 shadow-lg card-hover border-l-4 border-[#81C784]">
+                    <div class="w-12 h-12 bg-[#E8F5E9] rounded-xl flex items-center justify-center mb-4">
+                        <span class="text-2xl">🌏</span>
+                    </div>
+                    <h3 class="font-serif-display text-lg font-semibold text-[#1B3A1A] mb-2">
+                        Ngoại ngữ
+                    </h3>
+                    <p class="text-gray-600 text-sm leading-relaxed">
+                        Tiếng Anh thành thạo (IELTS 8.0), tiếng Đức giao tiếp cơ bản. 
+                        Có kinh nghiệm làm việc trong môi trường đa văn hóa và hợp tác quốc tế.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== RESEARCH INTERESTS ===== -->
+    <section id="research" class="py-16">
+        <div class="max-w-6xl mx-auto px-4">
+            <div class="text-center mb-12">
+                <span class="inline-block px-4 py-1 bg-[#E8F5E9] text-[#2D5A27] rounded-full text-sm font-medium mb-3">
+                    🔬 Khoa học
+                </span>
+                <h2 class="font-serif-display text-3xl md:text-4xl font-bold text-[#2D5A27]">
+                    Hướng Nghiên Cứu Chính
+                </h2>
+            </div>
+            
+            <!-- ========================================
+                 HƯỚNG NGHIÊN CỨU - CHỈNH SỬA TẠI ĐÂY
+            ======================================== -->
+            <div class="bg-white rounded-3xl shadow-xl overflow-hidden">
+                <div class="grid md:grid-cols-2">
+                    <!-- Image/Visual Side -->
+                    <div class="bg-gradient-to-br from-[#2D5A27] to-[#4A7C43] p-8 md:p-12 flex items-center justify-center">
+                        <div class="text-center text-white">
+                            <div class="text-6xl mb-6">🌏🔬</div>
+                            <h3 class="font-serif-display text-2xl font-bold mb-3">
+                                Nghiên cứu vì một<br>tương lai bền vững
+                            </h3>
+                            <p class="text-white/80 text-sm">
+                                "Khoa học là cầu nối giữa hiểu biết và hành động"
+                            </p>
+                        </div>
+                    </div>
+                    
+                    <!-- Content Side -->
+                    <div class="p-8 md:p-12">
+                        <div class="space-y-6">
+                            <div>
+                                <h4 class="font-serif-display text-xl font-semibold text-[#2D5A27] mb-3 flex items-center gap-2">
+                                    <span class="w-8 h-8 bg-[#E8F5E9] rounded-lg flex items-center justify-center text-sm">1</span>
+                                    Tác động của BĐKH đến Đồng bằng sông Cửu Long
+                                </h4>
+                                <p class="text-gray-600 leading-relaxed pl-10">
+                                    Nghiên cứu các kịch bản nước biển dâng, xâm nhập mặn và ảnh hưởng đến sản xuất nông nghiệp, 
+                                    sinh kế cộng đồng. Phát triển giải pháp thích ứng dựa vào hệ sinh thái.
+                                </p>
+                            </div>
+                            
+                            <div class="section-divider"></div>
+                            
+                            <div>
+                                <h4 class="font-serif-display text-xl font-semibold text-[#2D5A27] mb-3 flex items-center gap-2">
+                                    <span class="w-8 h-8 bg-[#E8F5E9] rounded-lg flex items-center justify-center text-sm">2</span>
+                                    Carbon xanh và hệ sinh thái ven biển
+                                </h4>
+                                <p class="text-gray-600 leading-relaxed pl-10">
+                                    Đánh giá tiềm năng lưu trữ carbon của rừng ngập mặn, thảm cỏ biển và đầm lầy ven biển. 
+                                    Phát triển phương pháp MRV (Đo lường - Báo cáo - Xác minh) cho thị trường carbon.
+                                </p>
+                            </div>
+                            
+                            <div class="section-divider"></div>
+                            
+                            <div>
+                                <h4 class="font-serif-display text-xl font-semibold text-[#2D5A27] mb-3 flex items-center gap-2">
+                                    <span class="w-8 h-8 bg-[#E8F5E9] rounded-lg flex items-center justify-center text-sm">3</span>
+                                    Chính sách khí hậu và Net Zero
+                                </h4>
+                                <p class="text-gray-600 leading-relaxed pl-10">
+                                    Hỗ trợ xây dựng lộ trình trung hòa carbon cho Việt Nam. Nghiên cứu cơ chế tài chính khí hậu, 
+                                    chuyển dịch năng lượng công bằng và các giải pháp giảm phát thải trong nông nghiệp.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== CONTACT SECTION ===== -->
+    <section id="contact" class="py-16 bg-white/50">
+        <div class="max-w-4xl mx-auto px-4">
+            <div class="text-center mb-12">
+                <span class="inline-block px-4 py-1 bg-[#E8F5E9] text-[#2D5A27] rounded-full text-sm font-medium mb-3">
+                    📬 Kết nối
+                </span>
+                <h2 class="font-serif-display text-3xl md:text-4xl font-bold text-[#2D5A27]">
+                    Liên Hệ & Hợp Tác
+                </h2>
+                <p class="text-gray-600 mt-4 max-w-2xl mx-auto">
+                    Rất vui lòng được trao đổi về các cơ hội hợp tác nghiên cứu, tư vấn chính sách, 
+                    hoặc các hoạt động đào tạo về biến đổi khí hậu.
+                </p>
+            </div>
+            
+            <!-- ========================================
+                 THÔNG TIN LIÊN HỆ - CHỈNH SỬA TẠI ĐÂY
+            ======================================== -->
+            <div class="grid md:grid-cols-3 gap-6">
+                <a href="mailto:nguyenvanan@climate.edu.vn" class="bg-white rounded-2xl p-6 shadow-lg card-hover text-center group">
+                    <div class="w-16 h-16 bg-[#E8F5E9] rounded-full flex items-center justify-center mx-auto mb-4 group-hover:bg-[#2D5A27] transition-colors">
+                        <svg class="w-7 h-7 text-[#2D5A27] group-hover:text-white transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
+                        </svg>
+                    </div>
+                    <h3 class="font-semibold text-[#1B3A1A] mb-1">Email</h3>
+                    <p class="text-[#4A7C43] text-sm">nguyenvanan@climate.edu.vn</p>
+                </a>
+                
+                <a href="tel:+84912345678" class="bg-white rounded-2xl p-6 shadow-lg card-hover text-center group">
+                    <div class="w-16 h-16 bg-[#E8F5E9] rounded-full flex items-center justify-center mx-auto mb-4 group-hover:bg-[#2D5A27] transition-colors">
+                        <svg class="w-7 h-7 text-[#2D5A27] group-hover:text-white transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/>
+                        </svg>
+                    </div>
+                    <h3 class="font-semibold text-[#1B3A1A] mb-1">Điện thoại</h3>
+                    <p class="text-[#4A7C43] text-sm">+84 912 345 678</p>
+                </a>
+                
+                <a href="https://scholar.google.com" target="_blank" class="bg-white rounded-2xl p-6 shadow-lg card-hover text-center group">
+                    <div class="w-16 h-16 bg-[#E8F5E9] rounded-full flex items-center justify-center mx-auto mb-4 group-hover:bg-[#2D5A27] transition-colors">
+                        <svg class="w-7 h-7 text-[#2D5A27] group-hover:text-white transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/>
+                        </svg>
+                    </div>
+                    <h3 class="font-semibold text-[#1B3A1A] mb-1">Google Scholar</h3>
+                    <p class="text-[#4A7C43] text-sm">Xem công bố khoa học</p>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== FOOTER ===== -->
+    <footer class="bg-[#2D5A27] text-white py-8">
+        <div class="max-w-6xl mx-auto px-4 text-center">
+            <div class="flex items-center justify-center gap-2 mb-4">
+                <span class="text-2xl">🌍</span>
+                <span class="font-serif-display text-lg font-semibold">Climate Scientist</span>
+            </div>
+            <p class="text-white/70 text-sm mb-4">
+                "Khoa học ngày hôm nay là công nghệ của ngày mai" - Edward Teller
+            </p>
+            <div class="section-divider mb-4 opacity-30"></div>
+            <p class="text-white/50 text-xs">
+                © 2024 - Thiết kế với 💚 cho Trái đất xanh
+            </p>
+        </div>
+    </footer>
+
+    <!-- JavaScript for mobile menu -->
+    <script>
+        // Mobile menu toggle
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const mobileMenu = document.getElementById('mobileMenu');
+        
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+        
+        // Close mobile menu when clicking a link
+        mobileMenu.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+            });
+        });
+        
+        // Smooth scroll for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+        
+        // Add scroll animation for cards
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+        
+        document.querySelectorAll('.card-hover').forEach(card => {
+            card.style.opacity = '0';
+            card.style.transform = 'translateY(20px)';
+            card.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+            observer.observe(card);
+        });
+    </script>
+</body>
+</html>
